@@ -5,6 +5,7 @@
 import random
 from numpy import *
 from functools import reduce
+from telnetlib import SE
 
 def sigmoid(inX):
     return 1.0 / (1 + exp(-inX))
@@ -63,6 +64,7 @@ class ConstNode(object):
             lambda ret, conn: ret + conn.downstream_node.delta * conn.weight,
             self.downstream, 0.0)
         self.delta = self.output * (1 - self.output) * downstream_delta
+        
 
     def __str__(self):
         node_str = '%u-%u: output: 1' % (self.layer_index, self.node_index)
@@ -95,7 +97,8 @@ class Connection(object):
     def __init__(self, upstream_node, downstream_node):
         self.upstream_node = upstream_node
         self.downstream_node = downstream_node
-        self.weight = random.uniform(-0.1, 0.1)
+#         self.weight = random.uniform(-0.1, 0.1)
+        self.weight = -0.02823934916405911
         self.gradient = 0.0
 
     def calc_gradient(self):
@@ -297,9 +300,11 @@ def gradient_check_test():
 
 
 if __name__ == '__main__':
-#     net = Network([8, 3, 8])
-#     train(net)
-#     net.dump()
-#     correct_ratio(net)
     print("启动")
+    net = Network([2, 2, 2])
+    sample_feature = [[0.1, 0.1], [0.2, 0.2], [0.3, 0.3], [0.4, 0.4]]
+    sample_label = [[0.2, 0.2], [0.3, 0.3], [0.4, 0.5], [0.4, 0.5]]
+    net.train(sample_label, sample_feature, 0.3, 1)
+    print(list(net.predict([0.5, 0.5])))
+    # print(random.uniform(-0.1, 0.1))
 

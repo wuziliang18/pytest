@@ -20,3 +20,5 @@ connections = [downstream_node
            
             
 print(connections)
+for conneciton in connections[-2::-1]:
+    print(conneciton)

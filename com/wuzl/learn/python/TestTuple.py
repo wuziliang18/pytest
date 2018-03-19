@@ -10,3 +10,5 @@ print(len(firstTuple))
 # 一个值的必须这么声明
 oneValueTuple = (1,)
 print(oneValueTuple)
+epsilon = 10e-4
+print(epsilon)

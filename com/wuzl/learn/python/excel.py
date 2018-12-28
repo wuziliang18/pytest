@@ -1,8 +1,8 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 path='/Users/ziliang.wu/Documents/data/'
-file=path+'客服数据库总表3000总数据.xlsx'
-newFile=path+'客服数据库总表3000总数据_new.xlsx'
+file=path+'111.xlsx'
+newFile=path+'111_new.xlsx'
 newSimpleFile=path+'simple_new.xlsx'
 wb=load_workbook(file)
 wbNew = Workbook()
